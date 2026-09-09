@@ -184,6 +184,60 @@ tbody tr:hover{ background:var(--navy-050); }
 .legend-inline{ display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-500); margin-top:8px; }
 .legend-dot{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
 
+
+/* ---------- Dashboard guide ---------- */
+.guide-btn{
+  font-family:var(--font-body); font-size:12.5px; font-weight:600;
+  color:var(--navy-900); background:var(--gold-100);
+  border:1px solid var(--gold-500); border-radius:var(--radius);
+  padding:7px 12px; cursor:pointer; white-space:nowrap;
+}
+.guide-btn:hover{ background:#f1e0bb; }
+.guide-modal{
+  position:fixed; inset:0; z-index:1000; display:none;
+  align-items:center; justify-content:center; padding:24px;
+  background:rgba(13,32,54,.58);
+}
+.guide-modal.open{ display:flex; }
+.guide-dialog{
+  width:min(760px, 100%); max-height:88vh; overflow:auto;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:6px; box-shadow:0 18px 50px rgba(13,32,54,.25);
+}
+.guide-head{
+  position:sticky; top:0; z-index:1; display:flex; align-items:flex-start;
+  justify-content:space-between; gap:16px; padding:18px 20px;
+  background:var(--panel); border-bottom:1px solid var(--line);
+}
+.guide-head h2{ font-size:19px; }
+.guide-head p{ margin:3px 0 0; font-size:12px; color:var(--ink-500); }
+.guide-close{
+  flex:none; width:34px; height:34px; border:1px solid var(--line);
+  border-radius:var(--radius); background:var(--navy-050); color:var(--ink-700);
+  font-size:22px; line-height:1; cursor:pointer;
+}
+.guide-close:hover{ background:var(--navy-100); }
+.guide-body{ padding:18px 20px 22px; color:var(--ink-700); }
+.guide-body h3{ font-size:14px; margin:18px 0 7px; }
+.guide-body h3:first-child{ margin-top:0; }
+.guide-body p{ margin:0 0 9px; }
+.guide-body ol, .guide-body ul{ margin:7px 0 10px 20px; padding:0; }
+.guide-body li{ margin:5px 0; }
+.guide-note{
+  margin-top:16px; padding:11px 13px; background:var(--navy-050);
+  border-left:4px solid var(--navy-700); font-size:12px;
+}
+.guide-status{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:8px; }
+.guide-status div{ padding:8px 10px; border:1px solid var(--line-soft); border-radius:var(--radius); font-size:12px; }
+.guide-status .good{ border-left:4px solid var(--green-500); }
+.guide-status .warn{ border-left:4px solid var(--gold-600); }
+.guide-status .bad{ border-left:4px solid var(--maroon-500); }
+@media (max-width:700px){
+  .guide-status{ grid-template-columns:1fr; }
+  .guide-modal{ padding:12px; }
+  .topbar .guide-btn{ order:10; }
+}
+
 </style>
 </head>
 <body>
@@ -225,6 +279,7 @@ tbody tr:hover{ background:var(--navy-050); }
         <h1 id="pageTitle">Executive Summary</h1>
         <div class="sub" id="pageSub">A whole-school view across learners, resources, and operations</div>
       </div>
+      <button type="button" class="guide-btn" id="openGuide" aria-haspopup="dialog" aria-controls="guideModal">Dashboard Guide</button>
       <div class="filter-group">
         <label for="fYear">School / Fiscal Year</label>
         <select id="fYear"></select>
@@ -262,6 +317,52 @@ tbody tr:hover{ background:var(--navy-050); }
       <section class="tab-panel" id="tab-issues"></section>
 
     </main>
+  </div>
+</div>
+
+<!-- ================= DASHBOARD GUIDE ================= -->
+<div class="guide-modal" id="guideModal" aria-hidden="true">
+  <div class="guide-dialog" role="dialog" aria-modal="true" aria-labelledby="guideTitle" tabindex="-1">
+    <div class="guide-head">
+      <div>
+        <h2 id="guideTitle">Dashboard Guide</h2>
+        <p>Cabiao National High School KPI &amp; Decision-Support Dashboard</p>
+      </div>
+      <button type="button" class="guide-close" id="closeGuide" aria-label="Close dashboard guide">&times;</button>
+    </div>
+    <div class="guide-body">
+      <h3>Purpose</h3>
+      <p>This dashboard consolidates selected institutional KPIs to help school administrators monitor performance, identify gaps, compare results against targets, and prioritize areas requiring management attention.</p>
+
+      <h3>How to Use the Dashboard</h3>
+      <ol>
+        <li><strong>Select a dashboard section</strong> from the left sidebar, such as Enrollment &amp; Retention, Academic &amp; Attendance, Budget &amp; Finance, Workforce, Programs &amp; Reporting, Stakeholders, or Priority Issues.</li>
+        <li><strong>Use the School / Fiscal Year and Quarter filters</strong> at the top of the page to change the period being analyzed.</li>
+        <li><strong>Use section-specific filters</strong> where available, such as grade level, subject, department, category, or stakeholder group.</li>
+        <li><strong>Review KPI cards, charts, and tables</strong> together. KPI cards provide a quick summary, while charts and tables show trends, comparisons, and areas requiring closer review.</li>
+        <li><strong>Open Priority Issues</strong> to view the most significant performance gaps identified across the dashboard for management attention.</li>
+      </ol>
+
+      <h3>Dashboard Perspectives</h3>
+      <ul>
+        <li><strong>Student Outcomes</strong> — enrollment, retention, attendance, and academic performance.</li>
+        <li><strong>Financial Management</strong> — budget utilization, procurement, disbursement, and reporting compliance.</li>
+        <li><strong>Internal Operations</strong> — workforce, training, programs, activities, and report submission.</li>
+        <li><strong>Stakeholder Engagement</strong> — satisfaction, participation, partnerships, and stakeholder support.</li>
+      </ul>
+
+      <h3>Interpreting Status Indicators</h3>
+      <div class="guide-status">
+        <div class="good"><strong>Green</strong><br>Generally indicates favorable performance or target attainment.</div>
+        <div class="warn"><strong>Gold</strong><br>Generally indicates an area that should be monitored.</div>
+        <div class="bad"><strong>Maroon</strong><br>Generally indicates a performance gap or area requiring attention.</div>
+      </div>
+
+      <h3>Priority Issues</h3>
+      <p>The Priority Issues section is intended as a decision-support view. It summarizes and ranks notable performance concerns based on the dashboard's KPI results and defined thresholds. Administrators should use these findings together with operational context and validated school records before making final decisions.</p>
+
+      <div class="guide-note"><strong>Data note:</strong> The dashboard uses a research dataset developed for the pilot implementation of the Cabiao National High School KPI Dashboard, covering SY 2023–2024 to SY 2025–2026. The publicly presented data are for academic demonstration and should not be interpreted as official or current CNHS operational records.</div>
+    </div>
   </div>
 </div>
 
@@ -1768,9 +1869,38 @@ function initNav(){
   });
 }
 
+function initGuide(){
+  const modal = document.getElementById('guideModal');
+  const openBtn = document.getElementById('openGuide');
+  const closeBtn = document.getElementById('closeGuide');
+  const dialog = modal.querySelector('.guide-dialog');
+
+  function openGuide(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(()=>dialog.focus(), 0);
+  }
+
+  function closeGuide(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', openGuide);
+  closeBtn.addEventListener('click', closeGuide);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeGuide(); });
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape' && modal.classList.contains('open')) closeGuide();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function(){
   initFilters();
   initNav();
+  initGuide();
   setActiveTab('overview');
 });
 
@@ -1779,4 +1909,3 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 </body>
 </html>
-```
