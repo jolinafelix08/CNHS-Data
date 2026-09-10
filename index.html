@@ -254,17 +254,19 @@ tbody tr:hover{ background:var(--navy-050); }
     <div class="nav-group-label">Overview</div>
     <div class="navlink active" data-tab="overview"><span class="num">—</span>Executive Summary</div>
 
-    <div class="nav-group-label">Learners</div>
+    <div class="nav-group-label">Student Outcomes</div>
     <div class="navlink" data-tab="enrollment"><span class="num">01</span>Enrollment &amp; Retention</div>
     <div class="navlink" data-tab="academic"><span class="num">02</span>Academic &amp; Attendance</div>
 
-    <div class="nav-group-label">Resources</div>
+    <div class="nav-group-label">Financial Management</div>
     <div class="navlink" data-tab="finance"><span class="num">03</span>Budget &amp; Finance</div>
-    <div class="navlink" data-tab="workforce"><span class="num">04</span>Workforce</div>
+    <div class="navlink" data-tab="programs"><span class="num">04</span>Programs &amp; Reporting</div>
 
-    <div class="nav-group-label">Operations</div>
-    <div class="navlink" data-tab="programs"><span class="num">05</span>Programs &amp; Reporting</div>
-    <div class="navlink" data-tab="stakeholders"><span class="num">06</span>Stakeholders</div>
+    <div class="nav-group-label">Internal Operations</div>
+    <div class="navlink" data-tab="workforce"><span class="num">05</span>Workforce</div>
+
+    <div class="nav-group-label">Stakeholder Data</div>
+    <div class="navlink" data-tab="stakeholders"><span class="num">06</span>Stakeholder Engagement</div>
 
     <div class="nav-group-label">Action</div>
     <div class="navlink" data-tab="issues"><span class="num">07</span>Priority Issues</div>
@@ -277,7 +279,7 @@ tbody tr:hover{ background:var(--navy-050); }
     <header class="topbar">
       <div class="title">
         <h1 id="pageTitle">Executive Summary</h1>
-        <div class="sub" id="pageSub">A whole-school view across learners, resources, and operations</div>
+        <div class="sub" id="pageSub">A whole-school view across student outcomes, financial management, internal operations, and stakeholder engagement</div>
       </div>
       <button type="button" class="guide-btn" id="openGuide" aria-haspopup="dialog" aria-controls="guideModal">Dashboard Guide</button>
       <div class="filter-group">
@@ -301,16 +303,14 @@ tbody tr:hover{ background:var(--navy-050); }
       <!-- ============ ACADEMIC ============ -->
       <section class="tab-panel" id="tab-academic"></section>
 
-      <!-- ============ FINANCE ============ -->
+      <!-- ============ FINANCIAL MANAGEMENT ============ -->
       <section class="tab-panel" id="tab-finance"></section>
-
-      <!-- ============ WORKFORCE ============ -->
-      <section class="tab-panel" id="tab-workforce"></section>
-
-      <!-- ============ PROGRAMS ============ -->
       <section class="tab-panel" id="tab-programs"></section>
 
-      <!-- ============ STAKEHOLDERS ============ -->
+      <!-- ============ INTERNAL OPERATIONS ============ -->
+      <section class="tab-panel" id="tab-workforce"></section>
+
+      <!-- ============ STAKEHOLDER DATA ============ -->
       <section class="tab-panel" id="tab-stakeholders"></section>
 
       <!-- ============ ISSUES ============ -->
@@ -336,7 +336,7 @@ tbody tr:hover{ background:var(--navy-050); }
 
       <h3>How to Use the Dashboard</h3>
       <ol>
-        <li><strong>Select a dashboard section</strong> from the left sidebar, such as Enrollment &amp; Retention, Academic &amp; Attendance, Budget &amp; Finance, Workforce, Programs &amp; Reporting, Stakeholders, or Priority Issues.</li>
+        <li><strong>Select a dashboard section</strong> from the left sidebar, such as Enrollment &amp; Retention, Academic &amp; Attendance, Budget &amp; Finance, Programs &amp; Reporting, Workforce, Stakeholder Engagement, or Priority Issues.</li>
         <li><strong>Use the School / Fiscal Year and Quarter filters</strong> at the top of the page to change the period being analyzed.</li>
         <li><strong>Use section-specific filters</strong> where available, such as grade level, subject, department, category, or stakeholder group.</li>
         <li><strong>Review KPI cards, charts, and tables</strong> together. KPI cards provide a quick summary, while charts and tables show trends, comparisons, and areas requiring closer review.</li>
@@ -346,8 +346,8 @@ tbody tr:hover{ background:var(--navy-050); }
       <h3>Dashboard Perspectives</h3>
       <ul>
         <li><strong>Student Outcomes</strong> — enrollment, retention, attendance, and academic performance.</li>
-        <li><strong>Financial Management</strong> — budget utilization, procurement, disbursement, and reporting compliance.</li>
-        <li><strong>Internal Operations</strong> — workforce, training, programs, activities, and report submission.</li>
+        <li><strong>Financial Management</strong> — budget and finance, programs, and reporting performance.</li>
+        <li><strong>Internal Operations</strong> — workforce, staffing ratio, personnel attendance, and training.</li>
         <li><strong>Stakeholder Engagement</strong> — satisfaction, participation, partnerships, and stakeholder support.</li>
       </ul>
 
@@ -1822,19 +1822,19 @@ const TAB_RENDERERS = {
   enrollment: renderEnrollment,
   academic: renderAcademic,
   finance: renderFinance,
-  workforce: renderWorkforce,
   programs: renderPrograms,
+  workforce: renderWorkforce,
   stakeholders: renderStakeholders,
   issues: renderIssues
 };
 const TAB_TITLES = {
-  overview: ['Executive Summary','A whole-school view across learners, resources, and operations'],
+  overview: ['Executive Summary','A whole-school view across student outcomes, financial management, internal operations, and stakeholder engagement'],
   enrollment: ['Enrollment & Retention','Current size, year-over-year trend, and where learners are lost'],
   academic: ['Academic & Attendance','Grade-level attendance and subject performance against target'],
   finance: ['Budget & Finance','Utilization, procurement, disbursement, and reporting compliance'],
   workforce: ['Workforce','Staffing ratio, attendance, and training coverage'],
   programs: ['Programs & Reporting','Delivery of planned activities and required reports'],
-  stakeholders: ['Stakeholders','Satisfaction, participation, and support received'],
+  stakeholders: ['Stakeholder Engagement','Satisfaction, participation, partnerships, and support received'],
   issues: ['Priority Issues','The top management issues requiring attention right now']
 };
 
