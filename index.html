@@ -1044,7 +1044,7 @@ function renderEnrollment(){
   const bySection = rows.slice().sort((a,b)=> (b['Dropout Rate']||0)-(a['Dropout Rate']||0));
 
   el.innerHTML = `
-    <div class="section-head"><h2>Enrollment &amp; Retention</h2><span class="q">Q1&ndash;Q3 &middot; current size, trend, and loss points</span></div>
+    <div class="section-head"><h2>Enrollment &amp; Retention</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="enrGrade">Grade level</label>${selectHTML('enrGrade', grades, state.enrollment.grade, 'All grades')}</div>
     </div>
@@ -1137,7 +1137,7 @@ function renderAcademic(){
   const avgKeyLabel = academicAvgKey();
 
   el.innerHTML = `
-    <div class="section-head"><h2>Academic Performance &amp; Attendance</h2><span class="q">Q4&ndash;Q6 &middot; grading period shown: ${esc(avgKeyLabel)}</span></div>
+    <div class="section-head"><h2>Academic Performance &amp; Attendance</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="acadGrade">Grade level</label>${selectHTML('acadGrade', grades, state.academic.grade, 'All grades')}</div>
       <div class="filter-group"><label for="acadSubj">Subject</label>${selectHTML('acadSubj', subjects, state.academic.subject, 'All subjects')}</div>
@@ -1238,7 +1238,7 @@ function renderFinance(){
   const lateReports = finRep.filter(r=> r['On-Time Status']!=='On Time' || (r['Compliance Status']!=='Fully Compliant'));
 
   el.innerHTML = `
-    <div class="section-head"><h2>Budget &amp; Financial Management</h2><span class="q">Q7&ndash;Q12 &middot; utilization, procurement, disbursement &amp; compliance</span></div>
+    <div class="section-head"><h2>Budget &amp; Financial Management</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="finDept">Department</label>${selectHTML('finDept', depts, state.finance.department, 'All departments')}</div>
       <div class="filter-group"><label for="finCat">Budget category</label>${selectHTML('finCat', cats, state.finance.category, 'All categories')}</div>
@@ -1375,7 +1375,7 @@ function renderWorkforce(){
   const gaps = byDept.filter(d=> (d.attendance!==null && d.attendance<0.93) || (d.trainingRate!==null && d.trainingRate<0.75) || d.workload==='High');
 
   el.innerHTML = `
-    <div class="section-head"><h2>Workforce</h2><span class="q">Q13&ndash;Q14 &middot; staffing ratio, attendance &amp; training</span></div>
+    <div class="section-head"><h2>Workforce</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="wfDept">Department / office</label>${selectHTML('wfDept', depts, state.workforce.department, 'All departments')}</div>
     </div>
@@ -1461,7 +1461,7 @@ function renderPrograms(){
   const notDone = progs.filter(p=> p['Program Status']!=='Completed').slice().sort((a,b)=> (b['Days vs Target']||0)-(a['Days vs Target']||0));
 
   el.innerHTML = `
-    <div class="section-head"><h2>Programs &amp; Reporting Compliance</h2><span class="q">Q15&ndash;Q16 &middot; delivery of planned activities and required reports</span></div>
+    <div class="section-head"><h2>Programs &amp; Reporting Compliance</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="progDept">Department / unit</label>${selectHTML('progDept', depts, state.programs.department, 'All departments')}</div>
     </div>
@@ -1574,7 +1574,7 @@ function renderStakeholders(){
   });
 
   el.innerHTML = `
-    <div class="section-head"><h2>Stakeholder Engagement</h2><span class="q">Q17&ndash;Q20 &middot; satisfaction, participation, and support</span></div>
+    <div class="section-head"><h2>Stakeholder Engagement</h2></div>
     <div class="subfilters">
       <div class="filter-group"><label for="stkGroup">Stakeholder group</label>${selectHTML('stkGroup', groups, state.stakeholders.group, 'All groups')}</div>
       <div class="filter-group"><label for="stkDept">Department / unit</label>${selectHTML('stkDept', depts, state.stakeholders.department, 'All departments')}</div>
@@ -1776,7 +1776,7 @@ function renderIssues(){
   const catCounts = [...byCat.entries()].map(([c,rs])=>({category:c,count:rs.length}));
 
   el.innerHTML = `
-    <div class="section-head"><h2>Priority Management Issues</h2><span class="q">Q21 &middot; auto-ranked from all sections for ${scopeLabel()}</span></div>
+    <div class="section-head"><h2>Priority Management Issues</h2></div>
 
     <div class="kpi-row">
       ${kpiCard('Issues Flagged', fmtInt(issues.length), 'Across enrollment, academics, finance, workforce, programs &amp; stakeholders', issues.length>3?'bad':(issues.length>0?'warn':'good'))}
