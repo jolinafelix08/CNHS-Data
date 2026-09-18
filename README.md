@@ -162,22 +162,6 @@ CNHS-Data/
 
 ---
 
-## GitHub Pages Deployment
-
-1. Upload `index.html` and `README.md` to the repository.
-2. Open the repository **Settings**.
-3. Go to **Pages**.
-4. Under **Build and deployment**, choose:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main`
-   - **Folder:** `/ (root)`
-5. Save the settings.
-6. Wait for GitHub Pages to publish the site.
-
-The dashboard can then be accessed through the repository's GitHub Pages URL.
-
----
-
 ## Recommended Operational Workflow
 
 ```text
