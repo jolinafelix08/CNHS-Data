@@ -1,4 +1,4 @@
-# Cabiao National High School KPI & Decision-Support Dashboard
+# Cabiao National High School KPI-Based Strategic Dashboard
 
 A web-based **KPI Strategic Dashboard** developed for **Cabiao National High School (CNHS)** as part of the capstone project:
 
