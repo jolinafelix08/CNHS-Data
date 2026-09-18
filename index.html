@@ -238,6 +238,335 @@ tbody tr:hover{ background:var(--navy-050); }
   .topbar .guide-btn{ order:10; }
 }
 
+
+/* ============================================================
+   REFERENCE-STYLE REDESIGN — visual/layout only
+   Data, calculations, filters, and chart logic are unchanged.
+   ============================================================ */
+:root{
+  --navy-950:#062b4f;
+  --navy-900:#07375f;
+  --navy-800:#0a4778;
+  --navy-700:#145f9f;
+  --navy-100:#eaf2f9;
+  --navy-050:#f6f9fc;
+  --gold-600:#c68c00;
+  --gold-500:#e0a414;
+  --gold-100:#fff3d2;
+  --maroon-700:#a30f2e;
+  --maroon-500:#d51d3c;
+  --maroon-100:#fde9ed;
+  --green-700:#087548;
+  --green-500:#0a9a62;
+  --green-100:#e5f7ef;
+  --paper:#edf3f8;
+  --panel:#ffffff;
+  --ink-900:#092e57;
+  --ink-700:#3d5872;
+  --ink-500:#758aa0;
+  --line:#dbe5ee;
+  --line-soft:#edf2f6;
+  --radius:8px;
+  --shadow-card:0 3px 12px rgba(11,52,88,.08);
+}
+html{ background:#edf3f8; }
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 50% 0,#ffffff 0,#f4f8fb 35%,#e7eef5 100%);
+  font-size:13px;
+  color:var(--ink-900);
+}
+.shell{
+  grid-template-columns:176px minmax(0,1fr);
+  width:min(1540px,calc(100% - 32px));
+  min-height:calc(100vh - 32px);
+  margin:16px auto;
+  background:#f8fbfd;
+  border:1px solid #d8e3ec;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 16px 44px rgba(7,44,77,.14);
+}
+.sidebar{
+  position:sticky;
+  top:0;
+  height:calc(100vh - 32px);
+  padding:17px 10px 18px;
+  background:linear-gradient(180deg,#062e55 0%,#07365f 48%,#062b4f 100%);
+  border-right:1px solid rgba(255,255,255,.08);
+  overflow-y:auto;
+}
+.brand{
+  padding:3px 10px 14px;
+  margin-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.brand .school{ font-size:13px; line-height:1.25; color:#fff; }
+.brand .tag{ font-size:9px; line-height:1.35; color:#a7bdd3; margin-top:4px; }
+.nav-group-label{
+  padding:11px 10px 5px;
+  color:#7ea1bf;
+  font-size:8.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.navlink{
+  min-height:48px;
+  display:grid;
+  grid-template-columns:25px minmax(0,1fr);
+  align-items:center;
+  gap:8px;
+  padding:8px 9px;
+  margin:2px 0;
+  border:1px solid transparent;
+  border-left:0;
+  border-radius:6px;
+  color:#edf5fb;
+  font-size:10.5px;
+  font-weight:500;
+  line-height:1.22;
+  transition:background .16s ease,transform .16s ease,color .16s ease;
+}
+.navlink:hover{ background:rgba(255,255,255,.075); color:#fff; transform:translateX(1px); }
+.navlink.active{
+  color:#fff;
+  background:linear-gradient(135deg,#d69d20,#b88112);
+  border-color:#e6b74c;
+  box-shadow:0 4px 10px rgba(0,0,0,.14);
+}
+.nav-icon{ width:23px; height:23px; display:grid; place-items:center; color:currentColor; }
+.nav-icon svg{ width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.nav-text{ min-width:0; }
+.sidebar-foot{
+  margin-top:16px;
+  padding:11px 9px 4px;
+  border-top:1px solid rgba(255,255,255,.09);
+  color:#7fa0bd;
+  font-size:8.5px;
+  line-height:1.4;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:grid;
+  grid-template-columns:minmax(300px,1fr) auto auto auto;
+  align-items:center;
+  gap:10px 16px;
+  min-height:92px;
+  padding:14px 22px 12px;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid #dfe8ef;
+  box-shadow:0 1px 0 rgba(7,44,77,.03);
+  backdrop-filter:blur(8px);
+}
+.topbar .title{ margin-right:12px; }
+.topbar .title h1{
+  font-size:24px;
+  line-height:1.05;
+  color:#082f58;
+  letter-spacing:-.02em;
+}
+.topbar .title .sub{ margin-top:4px; color:#59718a; font-size:11px; }
+.guide-btn{
+  height:34px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:0 11px;
+  color:#0b3b68;
+  background:#fff8e8;
+  border:1px solid #e7c36c;
+  border-radius:5px;
+  font-size:10.5px;
+  font-weight:700;
+  box-shadow:0 1px 3px rgba(26,69,105,.06);
+}
+.guide-btn:hover{ background:#fff0c8; }
+.guide-help{
+  width:16px; height:16px; border-radius:50%; display:inline-grid; place-items:center;
+  color:#fff; background:#16598f; font-size:10px; line-height:1;
+}
+.filter-group{ gap:6px; }
+.filter-group label{
+  color:#536f88;
+  font-size:8.7px;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:none;
+  white-space:nowrap;
+}
+select{
+  height:34px;
+  min-width:112px;
+  padding:5px 27px 5px 9px;
+  background-color:#f9fbfd;
+  border:1px solid #ccd9e4;
+  border-radius:5px;
+  color:#163d63;
+  font-size:10.5px;
+  font-weight:600;
+}
+select.active-filter{ border-color:#d3a229; background-color:#fff9e8; }
+
+.content{
+  max-width:none;
+  padding:15px 18px 34px;
+  background:linear-gradient(180deg,#f9fbfd 0,#f5f9fc 100%);
+}
+.tab-panel{ animation:fadeTab .16s ease; }
+@keyframes fadeTab{ from{opacity:.55;transform:translateY(2px)} to{opacity:1;transform:none} }
+#tab-overview > .section-head:first-child,
+#tab-issues > .section-head:first-child{ display:none; }
+.section-head{ margin:17px 0 8px; align-items:center; }
+.section-head:first-child{ margin-top:0; }
+.section-head h2{ font-size:15px; color:#123b63; }
+.section-head .q{ color:#8294a5; font-size:9.5px; }
+.subfilters{
+  margin:0 0 10px;
+  padding:8px 10px;
+  gap:12px;
+  background:#fff;
+  border:1px solid #e0e8ef;
+  border-radius:7px;
+  box-shadow:0 2px 8px rgba(14,52,84,.035);
+}
+
+.kpi-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin-bottom:11px;
+}
+.kpi-card{
+  position:relative;
+  min-height:112px;
+  padding:12px 10px 10px;
+  text-align:center;
+  background:#fff;
+  border:1px solid #dfe8ef;
+  border-top:3px solid #1763a0;
+  border-radius:7px;
+  box-shadow:0 3px 11px rgba(12,49,79,.07);
+  overflow:hidden;
+}
+.kpi-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -28px -34px auto;
+  width:82px;height:82px;border-radius:50%;
+  background:rgba(16,83,137,.035);
+}
+.kpi-card.warn{ border-top-color:#dfa115; }
+.kpi-card.bad{ border-top-color:#d42140; }
+.kpi-card.good{ border-top-color:#079761; }
+.kpi-icon{ height:25px; display:grid; place-items:center; margin-bottom:2px; color:#155a91; }
+.kpi-card.warn .kpi-icon{ color:#d38f04; }
+.kpi-card.bad .kpi-icon{ color:#cf1738; }
+.kpi-card.good .kpi-icon{ color:#07885a; }
+.kpi-icon svg{ width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round; }
+.kpi-card .value{ margin-top:1px; color:#082f58; font-size:25px; line-height:1; font-weight:700; }
+.kpi-card .label{ margin-top:5px; color:#234765; font-size:10.7px; font-weight:700; letter-spacing:0; text-transform:none; }
+.kpi-card .note{ margin-top:3px; color:#6c8296; font-size:8.8px; line-height:1.25; }
+.kpi-card .delta{ margin-top:3px; font-size:9px; font-weight:600; }
+
+.grid-2{ grid-template-columns:minmax(0,1.18fr) minmax(300px,.92fr); gap:10px; }
+.grid-3{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.panel{
+  position:relative;
+  padding:12px 13px 11px;
+  background:#fff;
+  border:1px solid #dfe8ef;
+  border-radius:7px;
+  box-shadow:0 3px 12px rgba(14,52,84,.06);
+}
+.panel h3{
+  position:relative;
+  padding-left:10px;
+  color:#103a61;
+  font-size:13.5px;
+  line-height:1.2;
+}
+.panel h3::before{
+  content:""; position:absolute; left:0; top:1px; bottom:1px; width:3px; border-radius:2px; background:#15649f;
+}
+.panel .panel-sub{ margin:3px 0 7px 10px; color:#74899d; font-size:9.5px; }
+.chart-wrap{ height:245px; }
+.chart-wrap.tall{ height:315px; }
+.chart-wrap.short{ height:178px; }
+
+.issue-card{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr);
+  gap:8px;
+  margin-bottom:6px;
+  padding:8px 10px;
+  background:#fff;
+  border:1px solid #dfe8ef;
+  border-left:4px solid #d31b3d;
+  border-radius:5px;
+  box-shadow:0 2px 7px rgba(12,49,79,.045);
+}
+.issue-card.warn{ border-left-color:#e0a016; }
+.issue-card.info{ border-left-color:#16629e; }
+.issue-rank{
+  display:grid; place-items:center;
+  width:28px; height:100%; min-height:40px;
+  color:#123d63;
+  font-size:20px;
+  border-right:1px solid #e8eef3;
+}
+.issue-body h4{ color:#173c5d; font-size:11.5px; line-height:1.25; }
+.issue-body p{ margin-top:2px; color:#557089; font-size:9.7px; line-height:1.35; }
+.issue-meta{ margin-top:4px; gap:5px; }
+.badge{ padding:2px 7px; font-size:8.5px; font-weight:700; }
+
+.table-scroll{ max-height:330px; }
+table{ font-size:10.5px; }
+th{
+  padding:6px 7px;
+  color:#27516f;
+  background:#f6f9fc;
+  border-bottom:1px solid #dbe6ee;
+  font-size:8.5px;
+  font-weight:700;
+}
+td{ padding:6px 7px; border-bottom:1px solid #edf2f6; color:#405e76; }
+tbody tr:hover{ background:#f8fbfd; }
+.footnote{ color:#7890a3; font-size:8.8px; }
+
+.guide-dialog{ border-radius:10px; box-shadow:0 24px 70px rgba(5,37,66,.28); }
+.guide-head{ padding:15px 18px; }
+.guide-body{ padding:16px 18px 20px; }
+
+@media (max-width:1180px){
+  .shell{ grid-template-columns:160px minmax(0,1fr); width:calc(100% - 20px); margin:10px; min-height:calc(100vh - 20px); }
+  .sidebar{ height:calc(100vh - 20px); }
+  .topbar{ grid-template-columns:minmax(240px,1fr) auto auto; }
+  .topbar .filter-group:last-child{ grid-column:auto; }
+  .grid-3{ grid-template-columns:1fr; }
+}
+@media (max-width:900px){
+  .shell{ display:block; width:100%; min-height:100vh; margin:0; border-radius:0; border:0; }
+  .sidebar{ position:relative; width:100%; height:auto; display:flex; gap:5px; padding:8px; overflow-x:auto; }
+  .brand,.nav-group-label,.sidebar-foot{ display:none; }
+  .navlink{ flex:0 0 118px; min-height:52px; grid-template-columns:23px 1fr; }
+  .topbar{ top:0; grid-template-columns:1fr auto; padding:12px 14px; }
+  .topbar .title{ grid-column:1/-1; }
+  .filter-group{ justify-content:flex-start; }
+  .content{ padding:12px; }
+  .grid-2,.grid-3{ grid-template-columns:1fr; }
+}
+@media (max-width:620px){
+  .topbar{ grid-template-columns:1fr 1fr; }
+  .topbar .title,.guide-btn{ grid-column:1/-1; }
+  .guide-btn{ justify-self:start; }
+  .kpi-row{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .kpi-card{ min-height:108px; }
+}
+
 </style>
 </head>
 <body>
@@ -252,24 +581,24 @@ tbody tr:hover{ background:var(--navy-050); }
     </div>
 
     <div class="nav-group-label">Overview</div>
-    <div class="navlink active" data-tab="overview"><span class="num">—</span>Executive Summary</div>
+    <div class="navlink active" data-tab="overview"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg></span><span class="nav-text">Executive Summary</span></div>
 
     <div class="nav-group-label">Student Outcomes</div>
-    <div class="navlink" data-tab="enrollment"><span class="num">01</span>Enrollment &amp; Retention</div>
-    <div class="navlink" data-tab="academic"><span class="num">02</span>Academic &amp; Attendance</div>
+    <div class="navlink" data-tab="enrollment"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6"/></svg></span><span class="nav-text">Enrollment &amp; Retention</span></div>
+    <div class="navlink" data-tab="academic"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c3.2-.8 5.9-.2 8 1.6v12c-2.1-1.8-4.8-2.4-8-1.6z"/><path d="M20 5.5c-3.2-.8-5.9-.2-8 1.6v12c2.1-1.8 4.8-2.4 8-1.6z"/></svg></span><span class="nav-text">Academic &amp; Attendance</span></div>
 
     <div class="nav-group-label">Financial Management</div>
-    <div class="navlink" data-tab="finance"><span class="num">03</span>Budget &amp; Finance</div>
-    <div class="navlink" data-tab="programs"><span class="num">04</span>Programs &amp; Reporting</div>
+    <div class="navlink" data-tab="finance"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><span class="nav-text">Budget &amp; Finance</span></div>
+    <div class="navlink" data-tab="programs"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M15 3.5v4h4"/><path d="M9 11h6M9 14.5h6M9 18h4"/></svg></span><span class="nav-text">Programs &amp; Reporting</span></div>
 
     <div class="nav-group-label">Internal Operations</div>
-    <div class="navlink" data-tab="workforce"><span class="num">05</span>Workforce</div>
+    <div class="navlink" data-tab="workforce"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="2.7"/><circle cx="16.5" cy="9" r="2.2"/><path d="M3.5 19c.4-3.5 2.3-5.3 5.5-5.3s5.1 1.8 5.5 5.3"/><path d="M14 14.4c3.7-.4 5.8 1.2 6.4 4.6"/></svg></span><span class="nav-text">Workforce</span></div>
 
     <div class="nav-group-label">Stakeholder Data</div>
-    <div class="navlink" data-tab="stakeholders"><span class="num">06</span>Stakeholder Engagement</div>
+    <div class="navlink" data-tab="stakeholders"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/><circle cx="12" cy="6" r="2.7"/><path d="M3.5 19c.3-3 1.8-4.6 4.5-4.8M20.5 19c-.3-3-1.8-4.6-4.5-4.8"/><path d="M6.5 19c.4-3.8 2.2-5.7 5.5-5.7s5.1 1.9 5.5 5.7"/></svg></span><span class="nav-text">Stakeholder Engagement</span></div>
 
     <div class="nav-group-label">Action</div>
-    <div class="navlink" data-tab="issues"><span class="num">07</span>Priority Issues</div>
+    <div class="navlink" data-tab="issues"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 21 20H3z"/><path d="M12 9v5M12 17.2v.2"/></svg></span><span class="nav-text">Priority Issues</span></div>
 
     <div class="sidebar-foot">Data source: Research dataset developed for the pilot implementation of the Cabiao National High School KPI Dashboard, covering SY 2023–2024 to SY 2025–2026.</div>
   </nav>
@@ -281,7 +610,7 @@ tbody tr:hover{ background:var(--navy-050); }
         <h1 id="pageTitle">Executive Summary</h1>
         <div class="sub" id="pageSub">A whole-school view across student outcomes, financial management, internal operations, and stakeholder engagement</div>
       </div>
-      <button type="button" class="guide-btn" id="openGuide" aria-haspopup="dialog" aria-controls="guideModal">Dashboard Guide</button>
+      <button type="button" class="guide-btn" id="openGuide" aria-haspopup="dialog" aria-controls="guideModal">Dashboard Guide <span class="guide-help" aria-hidden="true">?</span></button>
       <div class="filter-group">
         <label for="fYear">School / Fiscal Year</label>
         <select id="fYear"></select>
@@ -749,10 +1078,23 @@ function tier(value, warnBelow, badBelow){
   if(value<warnBelow) return 'warn';
   return '';
 }
+function kpiIcon(label){
+  const l = String(label||'').toLowerCase();
+  if(l.includes('enrollment') || l.includes('learner')) return '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="2.5"/><circle cx="16" cy="9" r="2.1"/><path d="M3.8 19c.4-3.5 2.2-5.2 5.2-5.2s4.8 1.7 5.2 5.2"/><path d="M14 14.5c3.3-.2 5.2 1.3 5.7 4.5"/></svg>';
+  if(l.includes('attendance') || l.includes('rate') || l.includes('completion')) return '<svg viewBox="0 0 24 24"><path d="M4 18V9M9 18V5M14 18v-7M19 18V3"/><path d="m4 8 5-4 5 4 5-6"/></svg>';
+  if(l.includes('passing') || l.includes('academic') || l.includes('training')) return '<svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5z"/><path d="M7 12v4c2.7 2 7.3 2 10 0v-4"/></svg>';
+  if(l.includes('budget') || l.includes('utilization') || l.includes('allocation') || l.includes('disbursement') || l.includes('procurement')) return '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v8h8"/></svg>';
+  if(l.includes('stakeholder') || l.includes('areas touched') || l.includes('department')) return '<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.3"/><circle cx="16" cy="8" r="2.3"/><path d="M3.5 19c.4-3.3 1.9-5 4.5-5s4.1 1.7 4.5 5M11.5 19c.4-3.3 1.9-5 4.5-5s4.1 1.7 4.5 5"/></svg>';
+  if(l.includes('critical') || l.includes('issues') || l.includes('underutilized')) return '<svg viewBox="0 0 24 24"><path d="M12 3.5 21 20H3z"/><path d="M12 9v5M12 17.2v.2"/></svg>';
+  if(l.includes('watch') || l.includes('late') || l.includes('on-time')) return '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>';
+  if(l.includes('report') || l.includes('program')) return '<svg viewBox="0 0 24 24"><path d="M6 3.5h9l3 3V20H6z"/><path d="M15 3.5v4h4M9 12h6M9 15.5h6"/></svg>';
+  return '<svg viewBox="0 0 24 24"><path d="M4 18V10M10 18V6M16 18V3M22 18H2"/></svg>';
+}
 function kpiCard(label, value, note, kind, delta){
   return '<div class="kpi-card '+(kind||'')+'">'+
-    '<div class="label">'+esc(label)+'</div>'+
-    '<div class="value">'+value+'</div>'+
+    '<div class="kpi-icon">'+kpiIcon(label)+'</div>'+ 
+    '<div class="value">'+value+'</div>'+ 
+    '<div class="label">'+esc(label)+'</div>'+ 
     (delta? '<div class="delta '+delta.dir+'">'+delta.text+'</div>' : '')+
     (note? '<div class="note">'+note+'</div>' : '')+
   '</div>';
